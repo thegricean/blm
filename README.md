@@ -83,6 +83,16 @@ Can Sleep
 Can Blink
 Can Wave
 
+Categories:
+Women
+Men
+Millenials
+Baby Boomers
+Europeans
+Americans
+(Black Lives Matter and Blue Lives Matter)
+(Robins and Lions)
+
 # Useful links to articles
 
 On asymmetries in people who do and don't support Trump's perceptions in how white vs black people (and Christians vs non-Christians) are treated in the US. Also includes info on Democrats vs independents vs Republicans.
