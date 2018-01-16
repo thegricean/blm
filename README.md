@@ -90,6 +90,8 @@ Millenials
 Baby Boomers
 Europeans
 Americans
+Republicans
+Democrats
 (Black Lives Matter and Blue Lives Matter)
 (Robins and Lions)
 
