@@ -20,6 +20,15 @@ thrive
 cooperate
 be talented
 be pretty
+Are Beautiful
+Are Smart
+Are Nice
+Are Capable 
+Are Courteous
+Are Talented 
+Are Strong
+Are Lively
+Are Funny
 
 Negative:
 be rude
@@ -41,6 +50,15 @@ be intolerant
 be unkind
 quit
 get divorced
+Are Loud
+Are Selfish
+Are Flawed
+Are Ugly
+Are Dirty
+Are Weak 
+Are Dull
+Are Unintelligent
+Are Incompetent
 
 Neutral:
 lay eggs
@@ -55,6 +73,15 @@ stretch
 camouflage 
 burrow
 eat carrots
+Went Home
+Drink Water
+Eat Food
+Roar
+Go to the Bathroom
+Jump
+Can Sleep
+Can Blink
+Can Wave
 
 # Useful links to articles
 
