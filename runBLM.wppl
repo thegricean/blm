@@ -1,0 +1,91 @@
+// run using:
+// webppl runBLM.wppl --require ./refModule/
+
+var alphas = [1,2,5,10];
+
+map(function(al) {
+  console.log("next alpha: "+al);
+
+	var model = BLM({
+		alpha: al
+	});
+
+	var speaker = model.speaker;
+	var runSpeaker = model.runSpeaker;
+	var runListener = model.runListener;
+	var listener = model.listener;
+	var litListener = model.litListener;
+
+	// var listenerOutput = runListener(listener, "blm", "which_lm");
+	var listenerOutput = runListener(listener, "alm");
+	// console.log("Which lives matter?");
+	// console.log(listenerOutput);
+	// refModule.writeDist(listenerOutput, ["blm","which_lm",al], "results/data/listener.csv",2);            
+	refModule.writeDist(listenerOutput, ["alm",al], "results/data/listener.csv",2);            
+
+	// var listenerOutput = runListener(listener, "blm", "do_blm");
+	// // console.log("Do black lives matter?");
+	// // console.log(listenerOutput);
+	// refModule.writeDist(listenerOutput, ["blm","do_blm",al], "results/data/listener.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: true, white: true}, "do_blm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["do_blm","BW",al], "results/data/speaker.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: true, white: false}, "do_blm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["do_blm","Bw",al], "results/data/speaker.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: false, white: true}, "do_blm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["do_blm","bW",al], "results/data/speaker.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: false, white: false}, "do_blm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["do_blm","bw",al], "results/data/speaker.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: true, white: true}, "which_lm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["which_lm","BW",al], "results/data/speaker.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: true, white: false}, "which_lm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["which_lm","Bw",al], "results/data/speaker.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: false, white: true}, "which_lm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["which_lm","bW",al], "results/data/speaker.csv",2);            
+
+	var speakerOutput = runSpeaker(speaker, {black: false, white: false}, "which_lm");
+	// console.log(speakerOutput);
+	refModule.writeDist(speakerOutput, ["which_lm","bw",al], "results/data/speaker.csv",2);            
+
+}, alphas);
+
+
+
+
+
+
+	// var litListenerOutput = runListener(litListener, "blm", "do_blm");
+	// console.log(litListenerOutput);
+
+	// var litListenerOutput = runListener(litListener, "blm", "which_lm");
+	// console.log(litListenerOutput);
+
+	// map(function(al) {
+	//   console.log("next alpha: "+al);
+
+	//   var modelOutput = runModel(speaker, ["size","blue","thumbtack"]);
+	//   refModule.writeDist(modelOutput, [al,le,tc,ts,cc,cs,"size_sufficient"], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);            
+	  
+	//   var modelOutput = runModel(speaker, ["othersize","red","thumbtack"]);
+	//   refModule.writeDist(modelOutput, [al,le,tc,ts,cc,cs,"color_sufficient"], "results_wppl/data/"+modeltype+"/speaker_"+typtype+"_"+searchtype+".csv",2);                        
+	// }, alphas);
+
+
+
+
+
+
+

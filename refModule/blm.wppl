@@ -1,0 +1,133 @@
+
+var BLM = function(params) {
+// possible states of the world
+  var statePrior = function() {
+    return Categorical({
+      // ps: [.25,.25,.25,.25], // uniform
+      // ps: [.03,.03,.91,.03], // white matters but not black
+      ps: [.03,.91,.03,.03], // black matters but not white
+      // ps: [.91,.03,.03,.03], // everyone matters!
+      // ps: [.03,.03,.03,.91], // nobody matters!
+      vs: [{black:true, white:true},
+           {black:true, white:false},
+           {black:false, white:true},
+           {black:false, white:false}]})
+  };
+
+  var qudPrior = function() {
+     return Categorical({
+      ps: [.5,.5],
+      // ps: [.9,.1],
+      // ps: [.1,.9],
+      vs: ["do_blm","which_lm"]
+     });
+  };
+
+  // possible utterances
+  var utterancePrior = function() {
+    // return uniformDraw(['blm', 'nblm'])
+    return uniformDraw(['blm', 'wlm', 'alm', 'nlm'])
+  };
+
+  var qudFns = {
+    do_blm : function(state) {return { black: state['black'] } },
+    // do_wlm : function(state) {return { white: state['white'] } },
+    which_lm : function(state) {return state }
+  };
+
+  // meaning funtion to interpret the utterances
+  var literalMeanings = {
+    blm: function(state) { return state["black"] },
+    nblm: function(state) { return  !state["black"]  },
+    wlm: function(state) { return state["white"]},
+    nwlm: function(state) { return !state["white"]},
+    alm: function(state) { return state["black"] && state["white"] },
+    nlm: function(state) { return !state["black"] && !state["white"] }
+  };
+
+  // literal listener
+  var literalListener = cache(function(utt,qud) {
+    return Infer({method:"enumerate"},
+    function(){
+      var state = sample(statePrior())
+      var meaning = literalMeanings[utt]
+      // var qudFn = qudFns[qud]
+      // console.log(qudFn)
+      condition(meaning(state))
+      return state
+      // return qudFn(state["black"],state["white"])
+    })
+  });
+
+
+  // pragmatic speaker
+  var speaker = cache(function(state,qud) {
+    var qudFn = qudFns[qud];
+    return Infer({method:"enumerate"}, function(){
+      var utt = utterancePrior()
+      var projectedListener = Infer({method: 'enumerate'}, function() {
+        return qudFn(sample(literalListener(utt)))
+      });
+      // console.log(state)
+      // console.log(utt)
+      // console.log(literalListener(utt).score(state))
+      factor(params.alpha * projectedListener.score(qudFn(state)))
+      // factor(params.alpha * literalListener(utt).score(state))
+      return utt
+    })
+  });
+
+  // pragmatic listener
+  // var pragmaticListener = cache(function(utt,qud) {
+  var pragmaticListener = cache(function(utt) {  
+    return Infer({method:"enumerate"},
+    function(){
+    //   var state = sample(statePrior())
+    //   // console.log(state);
+    //   // var qud = sample(qudPrior())
+    //   var qudFn = qudFns[qud]
+    //   // console.log(qudFn);
+    //   var qValue = qudFn(state)
+    //   // console.log(qValue);
+    //   observe(speaker(qValue,qud),utt)
+    //   // observe(speaker(state),utt)
+    //   // return {state:state, qud:qud}
+    //   return state
+
+    var state = sample(statePrior())
+    var qud = sample(qudPrior())
+    observe(speaker(state, qud), utt)
+    // return {state:state, qud:qud}
+    return qud
+
+    })
+  });
+
+  var runSpeaker = function(speakerModel, target_state, qud) { 
+    // var runSpeaker = function(speakerModel, target_state) {     
+    var speakerDist = speakerModel(target_state,qud);
+    // var speakerDist = speakerModel(target_state);
+    return Infer({method:'enumerate'},function(){
+      var utt = sample(speakerDist);
+      return utt;
+    });
+  };
+
+  // var runListener = function(listenerModel, utterance, qud) { 
+    var runListener = function(listenerModel, utterance) { 
+    // var listenerDist = listenerModel(utterance,qud);
+    var listenerDist = listenerModel(utterance);
+    return Infer({method:'enumerate'},function(){
+      var state = sample(listenerDist);
+      return state;
+    });
+  };    
+
+  return {
+    speaker : speaker,
+    listener: pragmaticListener,
+    litListener: literalListener,
+    runSpeaker : runSpeaker,
+    runListener : runListener
+  };
+};

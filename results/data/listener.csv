@@ -1,0 +1,8 @@
+alm,1,which_lm,0.05
+alm,1,do_blm,0.95
+alm,2,which_lm,0.05
+alm,2,do_blm,0.95
+alm,5,which_lm,0.06
+alm,5,do_blm,0.94
+alm,10,which_lm,0.06
+alm,10,do_blm,0.94

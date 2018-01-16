@@ -1,0 +1,19 @@
+M = \{<\textrm{b},\textrm{w}>, <\textrm{b},\neg \textrm{w}>, <\neg \textrm{b},\textrm{w}>, <\neg \textrm{b}, \neg \textrm{w}>\}
+
+
+U = \{\textrm{Black lives matter},
+      \textrm{All lives matter},
+      \textrm{White lives matter},
+      \textrm{No lives matter}\}
+
+q : M \rightarrow A
+
+P_{S_1}(u|m,q) \propto e^{\lambda \cdot (\ln P_{L_0}(q(m)|u))}      
+
+P_{L_0}(q(m)|u) \propto \sum_{m'} \delta_{q(m')=q(m)} P_{L_0}(m'|u)
+
+P_{L_1}(m|u,q) \propto P_{S_1}(u|m,q) \cdot P(m) \cdot  P(q) 
+
+P_{L_1}(q|u) \propto P(q) \sum_m P(m)P_{S_1}(u|m,q)
+
+P_{L_1}(m,q|u) \propto P_{S_1}(u|m,q) P(m) P(q)

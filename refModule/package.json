@@ -1,0 +1,11 @@
+{
+  "name": "refModule",
+  "main": "ref.js",
+  "webppl": {
+    "wppl" : ["blm.wppl"]
+  },
+  "dependencies": {
+    "underscore": "*",
+    "babyparse": "*"
+  }
+}

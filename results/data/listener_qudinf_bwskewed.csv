@@ -1,0 +1,9 @@
+Utterance,Lambda,QUD,Probability
+blm,1,do_blm,0.49
+blm,1,which_lm,0.51
+blm,2,do_blm,0.49
+blm,2,which_lm,0.51
+blm,5,do_blm,0.51
+blm,5,which_lm,0.49
+blm,10,do_blm,0.54
+blm,10,which_lm,0.46

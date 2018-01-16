@@ -1,0 +1,17 @@
+Utterance,QUD,Lambda,State,Probability,White,Black
+blm,which_lm,1,black_white,0.2,TRUE,TRUE
+blm,which_lm,1,black_nwhite,0.8,FALSE,TRUE
+blm,do_blm,1,nblack_white,0.5,TRUE,FALSE
+blm,do_blm,1,nblack_nwhite,0.5,FALSE,FALSE
+blm,which_lm,2,black_white,0.14,TRUE,TRUE
+blm,which_lm,2,black_nwhite,0.86,FALSE,TRUE
+blm,do_blm,2,nblack_white,0.5,TRUE,FALSE
+blm,do_blm,2,nblack_nwhite,0.5,FALSE,FALSE
+blm,which_lm,5,black_white,0.03,TRUE,TRUE
+blm,which_lm,5,black_nwhite,0.97,FALSE,TRUE
+blm,do_blm,5,nblack_white,0.5,TRUE,FALSE
+blm,do_blm,5,nblack_nwhite,0.5,FALSE,FALSE
+blm,which_lm,10,black_white,0,TRUE,TRUE
+blm,which_lm,10,black_nwhite,1,FALSE,TRUE
+blm,do_blm,10,nblack_white,0.5,TRUE,FALSE
+blm,do_blm,10,nblack_nwhite,0.5,FALSE,FALSE

@@ -1,0 +1,9 @@
+{
+  "name": "refModule",
+  "webppl": {
+    "wppl" : ["blm.wppl"]
+  },
+  "dependencies": {
+    "underscore": "~1.7.0"
+  }
+}
