@@ -1,3 +1,100 @@
+# PREDICATES TO NORM 
+Positive: 
+matters
+cares
+be generous
+be kind
+be helpful
+be funny
+succeed
+impress
+pray
+recycle
+create
+solve problems
+motivate others
+lead
+love
+innovate
+thrive
+cooperate
+be talented
+be pretty
+Are Beautiful
+Are Smart
+Are Nice
+Are Capable 
+Are Courteous
+Are Talented 
+Are Strong
+Are Lively
+Are Funny
+
+Negative:
+be rude
+be loud
+lie
+cheat
+steal
+cry
+disappoint others
+be arrogant
+be condescending
+swear
+kill
+bully
+be spoiled
+slam doors
+bite
+be intolerant
+be unkind
+quit
+get divorced
+Are Loud
+Are Selfish
+Are Flawed
+Are Ugly
+Are Dirty
+Are Weak 
+Are Dull
+Are Unintelligent
+Are Incompetent
+
+Neutral:
+lay eggs
+fly
+walk
+sleep
+swim
+run
+burn
+cook
+stretch
+camouflage 
+burrow
+eat carrots
+Went Home
+Drink Water
+Eat Food
+Roar
+Go to the Bathroom
+Jump
+Can Sleep
+Can Blink
+Can Wave
+
+Categories:
+Women
+Men
+Millenials
+Baby Boomers
+Europeans
+Americans
+Republicans
+Democrats
+(Black Lives Matter and Blue Lives Matter)
+(Robins and Lions)
+
 # Useful links to articles
 
 On asymmetries in people who do and don't support Trump's perceptions in how white vs black people (and Christians vs non-Christians) are treated in the US. Also includes info on Democrats vs independents vs Republicans.
