@@ -99,14 +99,14 @@ Democrats
 
 1. On asymmetries in people who do and don't support Trump's perceptions in how white vs black people (and Christians vs non-Christians) are treated in the US. Also includes info on Democrats vs independents vs Republicans.
 
-http://www.salon.com/2017/02/12/trumps-supporters-believe-a-false-narrative-of-white-victimhood-and-the-data-proves-it/
+	http://www.salon.com/2017/02/12/trumps-supporters-believe-a-false-narrative-of-white-victimhood-and-the-data-proves-it/
 
-"When you’re accustomed to privilege, equality feels like discrimination." --> modelable!
+	"When you’re accustomed to privilege, equality feels like discrimination." --> modelable!
 
-"The conservative, to be sure, speaks for a special type of victim: one who has lost something of value, as opposed to the wretched of the earth, whose chief complaint is that they never had anything to lose."
+	"The conservative, to be sure, speaks for a special type of victim: one who has lost something of value, as opposed to the wretched of the earth, whose chief complaint is that they never had anything to lose."
 
-Also includes a great list of potential domains for stimuli (includes links to facts on each issue):
-"Conservatives must create an ideological bubble in which crime is out of control (instead of hovering near historic lows), the rate of abortion is rising (instead of falling), refugees are committing terrorist attacks en masse (they aren’t at all) and immigrants are taking jobs (it’s the capitalists), all while the government is funneling money to undeserving black people (black people receive government support in accordance with their share of the population, despite making up a disproportionately large share of the poor). Conservatives, and many in the general public, believe that Muslims and immigrants (both legal and unauthorized) make up a dramatically larger share of the population than they actually do."
+	Also includes a great list of potential domains for stimuli (includes links to facts on each issue):
+	"Conservatives must create an ideological bubble in which crime is out of control (instead of hovering near historic lows), the rate of abortion is rising (instead of falling), refugees are committing terrorist attacks en masse (they aren’t at all) and immigrants are taking jobs (it’s the capitalists), all while the government is funneling money to undeserving black people (black people receive government support in accordance with their share of the population, despite making up a disproportionately large share of the poor). Conservatives, and many in the general public, believe that Muslims and immigrants (both legal and unauthorized) make up a dramatically larger share of the population than they actually do."
 
 2. On frames, and how hashtags are used to mark participation, assert individual and group identity
 
