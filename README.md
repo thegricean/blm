@@ -109,9 +109,10 @@ Also includes a great list of potential domains for stimuli (includes links to f
 "Conservatives must create an ideological bubble in which crime is out of control (instead of hovering near historic lows), the rate of abortion is rising (instead of falling), refugees are committing terrorist attacks en masse (they aren’t at all) and immigrants are taking jobs (it’s the capitalists), all while the government is funneling money to undeserving black people (black people receive government support in accordance with their share of the population, despite making up a disproportionately large share of the poor). Conservatives, and many in the general public, believe that Muslims and immigrants (both legal and unauthorized) make up a dramatically larger share of the population than they actually do."
 
 2. On frames, and how hashtags are used to mark participation, assert individual and group identity
-STEWART, L., ARIF, A., NIED, A. C., SPIRO, E. S., & STARBIRD, K. (2017). Drawing the Lines of Contention: Networked Frame Contests Within# BlackLivesMatter Discourse.
 
-http://faculty.washington.edu/kstarbi/Stewart_Starbird_Drawing_the_Lines_of_Contention-final.pdf
+	STEWART, L., ARIF, A., NIED, A. C., SPIRO, E. S., & STARBIRD, K. (2017). Drawing the Lines of Contention: Networked Frame Contests Within# BlackLivesMatter Discourse.
+
+	http://faculty.washington.edu/kstarbi/Stewart_Starbird_Drawing_the_Lines_of_Contention-final.pdf
 
 
 ## Vaguely related tweets
