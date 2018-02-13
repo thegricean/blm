@@ -21,3 +21,8 @@
 .long_form {
     padding-top: 20px;
 }
+
+#radio_inner_container {
+    margin-left: 290px;
+    margin-right: 130px;
+}
