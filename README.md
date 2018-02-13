@@ -1,3 +1,41 @@
+# METHOD
+
+Predicates:
+
+6 Positive: Kind, Competent, Be Honest, Be Smart, Be Strong, Be Generous
+6 Negative: Rude, Incompetent, Lie, Be Unintelligent, Be Weak, Be Sexist
+4 Neutral (human): Breathe, Sleep, Walk, Eat
+4 Neutral (animals): (Chickens) Lay Eggs, (Rabbits) Eat Carrots, (Pigs) Fly, (Cats) Talk
+
+Nouns:
+Men, Women
+Democrats, Republicans
+Americans, Europeans
+People in their 20s, People in their 50s,
+(Black Lives Matter)
+
+Method:
+Norming Experiment: 
+We first conducted a norming experiment to determine which set of positive, negative, and neutral predicates to use. In the norming experiment, participants were presented with a predicate/property. They rated on a sliding scale how good or bad it was for someone to have that property. 
+
+Test Trial:
+Design Decisions:
+Part 1:
+In one trial, each of the eight noun groups will be paired with one positive predicate and one negative predicate. (2 x 8).
+	Each of the eight noun groups will  be paired with two of the four neutral predicates. 
+(2 x 8). 
+There will be four animal fillers. (4)
+One isolated Black Lives Matters. (1)
+	Total 37 Questions.
+
+Include isolated “Black Lives Matter”
+Include animal fillers for definite “agree” vs “disagree”
+Ex. Chickens Lay Eggs, Pigs Fly
+Part 2: 
+Participants will be asked how they feel towards each noun group. 
+Part 3: 
+Participants will show how much they identify towards each noun group. 
+
 # PREDICATES TO NORM 
 Positive: 
 matters
