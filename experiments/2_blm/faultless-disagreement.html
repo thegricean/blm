@@ -122,7 +122,7 @@ If you agree to participate, please proceed to the study tasks.</p>
       <label><input type="radio"  id = "r4" name="response" value = "no"/><span id = "r4_span" class="no">{{}}</span></label>
       </div>
     </div>
-
+    <br/>
     <button onclick="_s.button()">Continue</button>
     <div class="err">Please choose a response before continuing.</div>
   </div>
@@ -146,15 +146,18 @@ If you agree to participate, please proceed to the study tasks.</p>
   <p class="name_said"></p>
 
     <p>Do you identify as a <span class = "singular">{{}}</span>?</p>
-    <div id="multi_slider_table" class="slider_table" align="center">
+    <div id = "radio_outer_container" align = 'center'>
+      <div id="radio_inner_container" align="left">
 <!--      <tr><td class="left">No, somebody must be wrong.</td><td class="right">Yes, it's a matter of opinion.</td></tr> -->
       <!---<tr><td>No, somebody must be wrong.</td><td><div id="slider0" class="slider"></div></td><td>Yes, it's a matter of opinion.</td></tr>-->
-      <label><input type="radio"  name="response2" value="Yes"/>Yes</label>
-      <br/>
-      <label><input type="radio"  name="response2" value="No"/>No</span></label>
-      <br/>
-      <label><input type="radio"  name="response2" value="Confused"/>Not Sure</label>
+        <label><input type="radio"  name="response2" value="Yes"/>Yes</label>
+        <br/>
+        <label><input type="radio"  name="response2" value="No"/>No</span></label>
+        <br/>
+        <label><input type="radio"  name="response2" value="Confused"/>Not Sure</label>
+      </div>
     </div>
+    <br/>
 
 <!--    <p><span class = "woman">{{}}</span> sold a <span class="noun">{{}}</span> in her store.</p>
 
