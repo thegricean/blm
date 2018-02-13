@@ -109,7 +109,8 @@ If you agree to participate, please proceed to the study tasks.</p>
  -->
     <p>How would you respond?</p>
 
-    <div id="multi_slider_table" class="slider_table" align="center">
+    <div id = "radio_outer_container" align = "center">
+      <div id="radio_inner_container" align="left">
 <!--      <tr><td class="left">No, somebody must be wrong.</td><td class="right">Yes, it's a matter of opinion.</td></tr> -->
       <!---<tr><td>No, somebody must be wrong.</td><td><div id="slider0" class="slider"></div></td><td>Yes, it's a matter of opinion.</td></tr>-->
       <label><input type="radio"  id = "r1" name="response" value = "notall"/><span id = "r1_span" class="notall">{{}}</span></label>
@@ -119,6 +120,7 @@ If you agree to participate, please proceed to the study tasks.</p>
       <label><input type="radio"  id = "r3" name="response" value = "yes"/><span id = "r3_span" class="yes">{{}}</span></label>
       <br/>
       <label><input type="radio"  id = "r4" name="response" value = "no"/><span id = "r4_span" class="no">{{}}</span></label>
+      </div>
     </div>
 
     <button onclick="_s.button()">Continue</button>
