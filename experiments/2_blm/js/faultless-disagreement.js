@@ -144,7 +144,7 @@ function make_slides(f) {
 //      };
 
 //      this.n_sliders = this.sentence_types.length;
-		this.n_sliders = 1;
+		  this.n_sliders = 1;
 //      $(".slider_row").remove();
 //      for (var i=0; i<this.n_sliders; i++) {
 //        var sentence_type_left = this.sentence_types[0];
@@ -161,10 +161,12 @@ function make_slides(f) {
     button : function() {
       console.log(exp.sliderPost);
       var checked_radio  = $('input[name="response"]:checked');
-      if (checked_radio.val() != undefined) {
+      if (checked_radio.val() != undefined) 
+      {
         this.log_responses();
         _stream.apply(this); //use exp.go() if and only if there is no "present" data.
-      } else {
+      } else 
+      {
         $(".err").show();
       }
     },
@@ -188,7 +190,8 @@ function make_slides(f) {
           "class" : this.stim.Class,                    
           "firstutterance" : this.verbs[0],
           // "sense" : $('input[name="sense"]:checked').val(),        
-          "slide_number" : exp.phase
+          "slide_number" : exp.phase,
+          "block":"production"
         });
     },
   });
@@ -283,14 +286,13 @@ function make_slides(f) {
 //    },
     log_responses : function() {
         exp.data_trials.push({
-          "radio_response": $('input[name="response2"]:checked').val(),
+          "response": $('input[name="response2"]:checked').val(),
           "noun" : this.stim.Noun,          
-          "predicate" : this.stim.Predicate,
           "nounclass" : this.stim.NounClass,
-          "class" : this.stim.Class,                    
           //"firstutterance" : this.verbs[0],
           // "sense" : $('input[name="sense"]:checked').val(),        
-          "slide_number" : exp.phase
+          "slide_number" : exp.phase,
+          "block":"identity"
         });
     },
 });
@@ -374,15 +376,14 @@ function make_slides(f) {
 //    },
     log_responses : function() {
         exp.data_trials.push({
-          "slider_response" : exp.sliderPost,
+          "response" : exp.sliderPost,
           //"radio_response": $('input[name="response2"]:checked').val(),
           "noun" : this.stim.Noun,          
-          "predicate" : this.stim.Predicate,
           "nounclass" : this.stim.NounClass,
-          "class" : this.stim.Class,                    
           //"firstutterance" : this.verbs[0],
           // "sense" : $('input[name="sense"]:checked').val(),        
-          "slide_number" : exp.phase
+          "slide_number" : exp.phase,
+          "block":"likeability"
         });
     },
 });
