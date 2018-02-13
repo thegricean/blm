@@ -164,7 +164,7 @@ function makeStims() {
 	{
 		"Predicate":"lay eggs",
 		"Class": "true_filler",
-		"Noun":"Chickens",
+		"Noun":"chickens",
 		"NounClass":"true_filler",
 		"POS":"verb"
 	});
@@ -173,7 +173,7 @@ function makeStims() {
 	{
 		"Predicate":"eat carrots",
 		"Class": "true_filler",
-		"Noun":"Rabbits",
+		"Noun":"rabbits",
 		"NounClass":"true_filler",
 		"POS":"verb"
 	});
@@ -182,7 +182,7 @@ function makeStims() {
 	{
 		"Predicate":"fly",
 		"Class": "false_filler",
-		"Noun":"Pigs",
+		"Noun":"pigs",
 		"NounClass":"false_filler",
 		"POS":"verb"
 	});
@@ -191,7 +191,7 @@ function makeStims() {
 	{
 		"Predicate":"talk",
 		"Class": "false_filler",
-		"Noun":"Cats",
+		"Noun":"cats",
 		"NounClass":"false_filler",
 		"POS":"verb"
 	});
