@@ -1,6 +1,6 @@
 # METHOD
 
-*Predicates:*
+**Predicates:**
 
 6 Positive: Kind, Competent, Be Honest, Be Smart, Be Strong, Be Generous
 
@@ -10,7 +10,7 @@
 
 4 Neutral (animals): (Chickens) Lay Eggs, (Rabbits) Eat Carrots, (Pigs) Fly, (Cats) Talk
 
-Nouns:
+**Nouns:**
 
 Men, Women
 
@@ -22,17 +22,17 @@ People in their 20s, People in their 50s,
 
 (Black Lives Matter)
 
-Method:
+**Method:**
 
-Norming Experiment: 
+**Norming Experiment:**
 
 We first conducted a norming experiment to determine which set of positive, negative, and neutral predicates to use. In the norming experiment, participants were presented with a predicate/property. They rated on a sliding scale how good or bad it was for someone to have that property. 
 
-Test Trial:
+**Test Trial:**
 
-Design Decisions:
+**Design Decisions:**
 
-Part 1:
+**Part 1:**
 
 In one trial, each of the eight noun groups will be paired with two positive predicates and two negative predicate. (2 x 8) + (2 x 8).
 
@@ -53,13 +53,13 @@ Include animal fillers for definite “agree” vs “disagree”
 
 Ex. Chickens Lay Eggs, Pigs Fly
 
-Part 2: 
+**Part 2:**
 
 Participants will be asked how they feel towards each noun group. 
 
 Total 9 likeability questions. 
 
-Part 3: 
+**Part 3:**
 
 Participants will show how much they identify towards each noun group. 
 
