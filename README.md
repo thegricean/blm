@@ -49,9 +49,7 @@ Total 45 Questions.
 
 Include isolated “Black Lives Matter”
 
-Include animal fillers for definite “agree” vs “disagree”
-
-Ex. Chickens Lay Eggs, Pigs Fly
+Include animal fillers for definite “agree” vs “disagree.” Ex. Chickens Lay Eggs, Pigs Fly
 
 **Part 2:**
 
