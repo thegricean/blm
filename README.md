@@ -11,6 +11,7 @@ Predicates:
 4 Neutral (animals): (Chickens) Lay Eggs, (Rabbits) Eat Carrots, (Pigs) Fly, (Cats) Talk
 
 Nouns:
+
 Men, Women
 
 Democrats, Republicans
