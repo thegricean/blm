@@ -34,15 +34,18 @@ Design Decisions:
 
 Part 1:
 
-In one trial, each of the eight noun groups will be paired with one positive predicate and one negative predicate. (2 x 8).
+In one trial, each of the eight noun groups will be paired with two positive predicates and two negative predicate. (2 x 8) + (2 x 8).
 
-Each of the eight noun groups will  be paired with two of the four neutral predicates. (2 x 8). 
+Each pair of noun groups will be paired with one of the four neutral predicates. (2 x 4). 
+(Ex. Men/Women paired with Walk.)
 
 There will be four animal fillers. (4)
 
 One isolated Black Lives Matters. (1)
 
-Total 37 Questions.
+**Order of radio button selection is shuffled between trials per participant. 
+
+Total 45 Questions.
 
 Include isolated “Black Lives Matter”
 
@@ -54,9 +57,15 @@ Part 2:
 
 Participants will be asked how they feel towards each noun group. 
 
+Total 9 likeability questions. 
+
 Part 3: 
 
 Participants will show how much they identify towards each noun group. 
+
+Total 9 identity questions. 
+
+**likeability and identity sections are shuffled between trials per participant
 
 # PREDICATES TO NORM 
 Positive: 
