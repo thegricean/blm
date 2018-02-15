@@ -1,6 +1,6 @@
 # METHOD
 
-Predicates:
+*Predicates:*
 
 6 Positive: Kind, Competent, Be Honest, Be Smart, Be Strong, Be Generous
 
