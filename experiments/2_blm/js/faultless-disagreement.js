@@ -69,11 +69,11 @@ function make_slides(f) {
       //Statement 1: Stimulus
       if (stim.POS == 'adjective')
       {
-        $(".stimulus").html(uppercaseNoun + " are " + stim.Predicate + ".");
+        $(".stimulus").html("<strong>"+uppercaseNoun + " are " + stim.Predicate + ".</strong>");
       }
       else if (stim.POS == 'verb')
       {
-        $(".stimulus").html(uppercaseNoun + " " + stim.Predicate + ".");
+        $(".stimulus").html("<strong>"+uppercaseNoun + " " + stim.Predicate + ".</strong>");
       }
       
       //Statement 2: Everyone 
@@ -159,7 +159,6 @@ function make_slides(f) {
 
 
     button : function() {
-      console.log(exp.sliderPost);
       var checked_radio  = $('input[name="response"]:checked');
       if (checked_radio.val() != undefined) 
       {
@@ -289,8 +288,8 @@ function make_slides(f) {
           "response": $('input[name="response2"]:checked').val(),
           "noun" : this.stim.Noun,          
           "nounclass" : this.stim.NounClass,
-          //"firstutterance" : this.verbs[0],
-          // "sense" : $('input[name="sense"]:checked').val(),        
+          "class" : "NA",                    
+          "firstutterance" : "NA",       
           "slide_number" : exp.phase,
           "block":"identity"
         });
@@ -299,7 +298,7 @@ function make_slides(f) {
 
   slides.likeability = slide({
     name : "likeability",
-    present : second_stimuli, //make second set of stimuli here 
+    present : third_stimuli, //make second set of stimuli here 
     present_handle : function(stim) {
       $(".err").hide();
       this.init_sliders();      
@@ -380,8 +379,8 @@ function make_slides(f) {
           //"radio_response": $('input[name="response2"]:checked').val(),
           "noun" : this.stim.Noun,          
           "nounclass" : this.stim.NounClass,
-          //"firstutterance" : this.verbs[0],
-          // "sense" : $('input[name="sense"]:checked').val(),        
+          "class" : "NA",                    
+          "firstutterance" : "NA",
           "slide_number" : exp.phase,
           "block":"likeability"
         });
@@ -439,7 +438,8 @@ function init() {
   //blocks of the experiment:
   //shuffle array of block names, put block_names[0] in one and block_names[1] in the other 
   block_names = _.shuffle(['likeability','identity']);
-  exp.structure=["i0", "instructions1",'radio_buttons','instructions2', block_names[0], block_names[1], 'subj_info', 'thanks'];
+  // exp.structure=["i0", "instructions1",'radio_buttons','instructions2', block_names[0], block_names[1], 'subj_info', 'thanks'];
+  exp.structure=["i0", "instructions1",'radio_buttons','instructions2', 'likeability', 'identity', 'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:
@@ -457,8 +457,7 @@ function init() {
 
   exp.slides = make_slides(exp);
 
-  exp.nQs = utils.get_exp_length(); //this does not work if there are stacks of stims (but does work for an experiment with this structure)
-                    //relies on structure and slides being defined
+  exp.nQs = 5+45+9+9;//
 
   $('.slide').hide(); //hide everything
 

@@ -26,3 +26,7 @@
     margin-left: 290px;
     margin-right: 130px;
 }
+
+input[type="radio"] {
+  margin-right: 7;
+}

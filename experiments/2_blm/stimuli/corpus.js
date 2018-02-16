@@ -43,6 +43,8 @@ var stimuli =  _.shuffle(makeStims());
 
 var second_stimuli = _.shuffle(makeSecondStims())
 
+var third_stimuli = _.shuffle(makeSecondStims())
+
 function makeStims() {
 	stims = [];
 
