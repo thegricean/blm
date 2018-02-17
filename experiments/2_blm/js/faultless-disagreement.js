@@ -188,7 +188,7 @@ function make_slides(f) {
           "nounclass" : this.stim.NounClass,
           "class" : this.stim.Class,                    
           "firstutterance" : this.verbs[0],
-          // "sense" : $('input[name="sense"]:checked').val(),        
+          "block_number" : "1",      
           "slide_number" : exp.phase,
           "block":"production"
         });
@@ -289,7 +289,8 @@ function make_slides(f) {
           "noun" : this.stim.Noun,          
           "nounclass" : this.stim.NounClass,
           "class" : "NA",                    
-          "firstutterance" : "NA",       
+          "firstutterance" : "NA",      
+          "block_number" : exp.blockidentity,           
           "slide_number" : exp.phase,
           "block":"identity"
         });
@@ -381,6 +382,7 @@ function make_slides(f) {
           "nounclass" : this.stim.NounClass,
           "class" : "NA",                    
           "firstutterance" : "NA",
+          "block_number" : exp.blocklikeability,           
           "slide_number" : exp.phase,
           "block":"likeability"
         });
@@ -411,7 +413,6 @@ function make_slides(f) {
           "trials" : exp.data_trials,
           "catch_trials" : exp.catch_trials,
           "system" : exp.system,
-          //"condition" : exp.condition,
           "subject_information" : exp.subj_data,
           "time_in_minutes" : (Date.now() - exp.startT)/60000
       };
@@ -438,8 +439,16 @@ function init() {
   //blocks of the experiment:
   //shuffle array of block names, put block_names[0] in one and block_names[1] in the other 
   block_names = _.shuffle(['likeability','identity']);
-  // exp.structure=["i0", "instructions1",'radio_buttons','instructions2', block_names[0], block_names[1], 'subj_info', 'thanks'];
-  exp.structure=["i0", "instructions1",'radio_buttons','instructions2', 'likeability', 'identity', 'subj_info', 'thanks'];
+  exp.blocklikeability = 0;
+  exp.blockidentity = 0;
+  if (block_names[0] == "likeability") {
+    exp.blocklikeability = 2;
+    exp.blockidentity = 3;
+  } else {
+    exp.blocklikeability = 3;
+    exp.blockidentity = 2;    
+  }
+  exp.structure=["i0", "instructions1",'radio_buttons','instructions2', block_names[0], block_names[1], 'subj_info', 'thanks'];
   
   exp.data_trials = [];
   //make corresponding slides:

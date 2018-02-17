@@ -134,9 +134,9 @@ function make_slides(f) {
     start : function() {
       exp.data= {
           "trials" : exp.data_trials,
-          "catch_trials" : exp.catch_trials,
           "system" : exp.system,
-          //"condition" : exp.condition,
+          "condition" : exp.condition,
+          "hit_information" : exp.hit_data,
           "subject_information" : exp.subj_data,
           "time_in_minutes" : (Date.now() - exp.startT)/60000
       };
