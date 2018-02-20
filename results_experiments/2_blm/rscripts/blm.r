@@ -1,7 +1,6 @@
 library(tidyverse)
 library(forcats)
 library(stringr)
-library(plyr)
 
 theme_set(theme_bw(18))
 source("helpers.r")
@@ -52,7 +51,8 @@ identity = d %>%
 
 likeability = d %>%
   filter(block == "likeability") %>%
-  droplevels()
+  droplevels() %>%
+  mutate(response = as.numeric(as.character(response)))
 
 nrow(production)
 nrow(likeability)
@@ -71,3 +71,20 @@ ggplot(production, aes(x=class, fill=response)) +
   facet_wrap(~noun) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
+# get likeability means
+agr = likeability %>%
+  group_by(noun,nounclass) %>%
+  summarize(Mean=mean(response),CILow=ci.low(response),CIHigh=ci.high(response)) %>%
+  mutate(YMin=Mean-CILow,YMax=Mean+CIHigh)
+
+ggplot(agr, aes(x=noun,y=Mean,fill=nounclass)) +
+  geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin=YMin,ymax=YMax),width=.25) +
+  facet_wrap(~nounclass,scales="free_x",nrow=1) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+
+ggplot(likeability, aes(x=noun,y=response,fill=nounclass)) +
+  # geom_violin() +
+  geom_boxplot() +
+  facet_wrap(~nounclass,scales="free_x",nrow=1) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
