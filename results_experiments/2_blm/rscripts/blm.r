@@ -36,7 +36,8 @@ ggplot(d, aes(education)) +
   stat_count()
 
 ggplot(d, aes(language)) +
-  stat_count()
+  stat_count() +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
 ggplot(d, aes(enjoyment)) +
   stat_count()
@@ -66,6 +67,14 @@ ggplot(likeability, aes(x=response, fill=nounclass)) +
   geom_histogram(stat="count") +
   facet_wrap(~noun)
 
+ggplot(likeability, aes(x=response, fill=nounclass)) +
+  geom_density() +
+  facet_wrap(~noun)
+
+ggplot(likeability, aes(x=response, fill=noun)) +
+  geom_density(alpha=.5) +
+  facet_wrap(~nounclass)
+
 ggplot(production, aes(x=class, fill=response)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~noun) +
@@ -88,3 +97,37 @@ ggplot(likeability, aes(x=noun,y=response,fill=nounclass)) +
   geom_boxplot() +
   facet_wrap(~nounclass,scales="free_x",nrow=1) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+
+# merge identity & likeability
+like = likeability %>%
+  select(workerid,noun,response,nounclass) %>%
+  mutate(response_likeable = response) %>%
+  select(-response)
+  
+id = identity %>%
+  select(workerid,noun,response,nounclass) %>%
+  mutate(response_identity = response) %>%
+  left_join(like,by=c("workerid","noun","nounclass"))
+  
+ggplot(id %>% filter(response_identity != "Confused"), aes(x=response_likeable, fill=response_identity)) +
+  geom_density(alpha=.5) +
+  facet_wrap(~noun)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
