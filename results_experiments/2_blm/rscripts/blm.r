@@ -134,11 +134,14 @@ id_collapsed_pred = identity %>%
 
 
 #######PLOTS: PRODUCTION RESPONSE COLLAPSED BY PREDICATE PER NOUN ############
-ggplot(id_collapsed_pred %>% filter(response_identity != "Yes"), aes(x=class, fill=response_prod)) +
+
+#out-group
+ggplot(id_collapsed_pred %>% filter(response_identity != "Yes" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~noun) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
+#in-group
 ggplot(id_collapsed_pred %>% filter(response_identity != "No" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~noun) +
@@ -157,15 +160,41 @@ id_collapsed_pred_noun = identity %>%
 
 View(id_collapsed_pred_noun) #production merged with identity collapsed by pred and noun 
 
-ggplot(id_collapsed_pred_noun %>%filter(response_identity != "Yes"), aes(x=class, fill=response_prod)) +
+###### PLOTS: IDENTITY X PRODUCTION COLLAPSED BY PREDICATE *AND* NOUN #################
+
+#outgroup
+ggplot(id_collapsed_pred_noun %>%filter(response_identity != "Yes" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
-View(prod)
+#ingroup
+ggplot(id_collapsed_pred_noun %>%filter(response_identity != "No" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
+###### PRODUCTION X LIKEABILITY COLLAPSED PRED AND NOUN#######
 
+like_collapsed_pred_noun = likeability %>%
+  select(workerid,response) %>%
+  mutate(response_likeability = response) %>%
+  left_join(prod_collapsed,by=c("workerid"))
 
+###### PRODUCTION X LIKEABILITY COLLAPSED PRED AND NOUN#######
 
+#didn't like - .33 and down
+ggplot(like_collapsed_pred_noun %>%filter(response_likeability < .33), aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+
+#neutral feeling - .33 and .66 
+ggplot(like_collapsed_pred_noun %>%filter(response_likeability >= .33 & response_likeability <= .66), aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+
+#did like - .66 and up 
+ggplot(like_collapsed_pred_noun %>%filter(response_likeability > .66), aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
 
 
