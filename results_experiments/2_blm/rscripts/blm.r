@@ -80,6 +80,8 @@ ggplot(production, aes(x=class, fill=response)) +
   facet_wrap(~noun) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
+View(identity)
+
 # get likeability means
 agr = likeability %>%
   group_by(noun,nounclass) %>%
@@ -108,14 +110,58 @@ id = identity %>%
   select(workerid,noun,response,nounclass) %>%
   mutate(response_identity = response) %>%
   left_join(like,by=c("workerid","noun","nounclass"))
+
+View(id)
   
 ggplot(id %>% filter(response_identity != "Confused"), aes(x=response_likeable, fill=response_identity)) +
   geom_density(alpha=.5) +
   facet_wrap(~noun)
 
+#merge identity and production 
+prod = production %>%
+  select(workerid,noun,response,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+#Resolving incompatible values for 'Black lives matter' condition between identity and production
+prod$noun <- gsub('Black lives', 'Black people', prod$noun)
+#prod$noun_class <- gsub('black_lives', 'black', prod$nounclass)
+
+id_collapsed_pred = identity %>%
+  select(workerid,response) %>%
+  mutate(response_identity = response) %>%
+  left_join(prod,by=c("workerid"))
 
 
+#######PLOTS: PRODUCTION RESPONSE COLLAPSED BY PREDICATE PER NOUN ############
+ggplot(id_collapsed_pred %>% filter(response_identity != "Yes"), aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_wrap(~noun) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 
+ggplot(id_collapsed_pred %>% filter(response_identity != "No" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_wrap(~noun) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+
+#Production merged with identity collapsed by pred and noun 
+prod_collapsed = production %>%
+  select(workerid,response,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+id_collapsed_pred_noun = identity %>%
+  select(workerid,response) %>%
+  mutate(response_identity = response) %>%
+  left_join(prod_collapsed,by=c("workerid"))
+
+View(id_collapsed_pred_noun) #production merged with identity collapsed by pred and noun 
+
+ggplot(id_collapsed_pred_noun %>%filter(response_identity != "Yes"), aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+
+View(prod)
 
 
 
