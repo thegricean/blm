@@ -189,6 +189,7 @@ like_collapsed_pred = likeability %>%
   select(workerid,response_2bins,noun) %>%
   right_join(prod,by=c("workerid","noun"))
 
+
 ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_grid(noun~response_2bins, scales="free_y") +
@@ -206,11 +207,14 @@ like_collapsed_pred_noun = likeability %>%
   select(workerid,response_2bins) %>%
   left_join(prod_collapsed,by=c("workerid"))
 
+View(like_collapsed_pred)
+
 ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_2bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/likeability2bins_collapsed.pdf")
+ggsave(file="../graphs/likeability2bins_collapsed.pdf", height = 3)
+
 
 ggplot(like_collapsed_pred_noun, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
