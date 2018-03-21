@@ -232,21 +232,6 @@ like_collapsed_pred_noun = likeability %>%
 
 ###### PRODUCTION X LIKEABILITY COLLAPSED PRED AND NOUN#######
 
-#didn't like - .33 and down
-ggplot(like_collapsed_pred_noun %>%filter(response_likeability < .33), aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-
-#neutral feeling - .33 and .66 
-ggplot(like_collapsed_pred_noun %>%filter(response_likeability >= .33 & response_likeability <= .66), aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-
-#did like - .66 and up 
-ggplot(like_collapsed_pred_noun %>%filter(response_likeability > .66), aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-
 like_collapsed_pred = likeability %>%
   select(workerid,response_3bins,noun) %>%
   right_join(prod,by=c("workerid","noun"))
