@@ -132,132 +132,65 @@ prod = production %>%
 prod$noun <- gsub('Black lives', 'Black people', prod$noun)
 #prod$noun_class <- gsub('black_lives', 'black', prod$nounclass)
 
+######### PRODUCTION X IDENTITY ##########
 id_collapsed_pred = identity %>%
   select(workerid,response,noun) %>%
   rename(response_identity = response) %>%
   right_join(prod,by=c("workerid","noun"))
 
-
-#In/Out Group Plots: Production response collapsed by predicate per noun
+#identity collapsed pred only 
 ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
-#######PLOTS: PRODUCTION RESPONSE COLLAPSED BY PREDICATE PER NOUN ############
-
-#out-group
-ggplot(id_collapsed_pred %>% filter(response_identity != "Yes" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_grid(noun~response_identity, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/ingroupoutgroup.pdf", height = 20)
+ggsave(file="../graphs/ingroupoutgroup.pdf")
 
-#in-group
-ggplot(id_collapsed_pred %>% filter(response_identity != "No" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  facet_wrap(~noun) +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-
-#Production merged with identity collapsed by pred and noun 
-prod_collapsed = production %>%
-  select(workerid,response,class) %>%
-  mutate(response_prod = response) %>%
-  select(-response)
-
-id_collapsed_pred_noun = identity %>%
-  select(workerid,response) %>%
-  mutate(response_identity = response) %>%
-  left_join(prod_collapsed,by=c("workerid"))
-
+#identity collapsed pred and noun 
 ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_identity, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/ingroupoutgroup_collapsed.pdf")
 
-###### PLOTS: IDENTITY X PRODUCTION COLLAPSED BY PREDICATE *AND* NOUN #################
-
-#outgroup
-ggplot(id_collapsed_pred_noun %>%filter(response_identity != "Yes" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-
-#Likeability2bins Plots: Production response collapsed by predicate per noun
-
-like_collapsed_pred = likeability %>%
-  select(workerid,response_2bins,noun) %>%
-  right_join(prod,by=c("workerid","noun"))
-
-
-ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  facet_grid(noun~response_2bins, scales="free_y") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/likeability2bins.pdf", height = 20)
-
-#Production merged with identity2bins collapsed by pred and noun 
-
-prod_collapsed = production %>%
-  select(workerid,response,class) %>%
-  mutate(response_prod = response) %>%
-  select(-response)
-
-like_collapsed_pred_noun = likeability %>%
-  select(workerid,response_2bins) %>%
-  left_join(prod_collapsed,by=c("workerid"))
-
-View(like_collapsed_pred)
-
-ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  facet_wrap(~response_2bins, scales="free_y") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/likeability2bins_collapsed.pdf", height = 3)
-
-
-ggplot(like_collapsed_pred_noun, aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-
-#Likeability3bins Plots: Production response collapsed by predicate per noun
-
-#ingroup
-ggplot(id_collapsed_pred_noun %>%filter(response_identity != "No" & response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-
-###### PRODUCTION X LIKEABILITY COLLAPSED PRED AND NOUN#######
-
-like_collapsed_pred_noun = likeability %>%
-  select(workerid,response) %>%
-  mutate(response_likeability = response) %>%
-  left_join(prod_collapsed,by=c("workerid"))
-
-###### PRODUCTION X LIKEABILITY COLLAPSED PRED AND NOUN#######
+###### PRODUCTION X LIKEABILITY 3 BINS#######
 
 like_collapsed_pred = likeability %>%
   select(workerid,response_3bins,noun) %>%
   right_join(prod,by=c("workerid","noun"))
 
+#likabiity 3 bins collapsed by pred, not noun
 ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_grid(noun~response_3bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/likeability3bins.pdf", height = 20)
 
-#Production merged with identity3bins collapsed by pred and noun 
-
-prod_collapsed = production %>%
-  select(workerid,response,class) %>%
-  mutate(response_prod = response) %>%
-  select(-response)
-
-like_collapsed_pred_noun = likeability %>%
-  select(workerid,response_3bins) %>%
-  left_join(prod_collapsed,by=c("workerid"))
-
+#likability 3 bins collapsed pred and noun 
 ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_3bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/likeability3bins_collapsed.pdf")
+
+###### PRODUCTION X LIKEABILITY 2 BINS#######
+
+like_collapsed_pred = likeability %>%
+  select(workerid,response_2bins,noun) %>%
+  right_join(prod,by=c("workerid","noun"))
+
+#likabiity 2 bins collapsed by pred, not noun
+ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_grid(noun~response_2bins, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/likeability2bins.pdf", height = 20)
+
+#likability 2 bins collapsed pred and noun 
+ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_wrap(~response_2bins, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/likeability2bins_collapsed.pdf")
 
 
 
