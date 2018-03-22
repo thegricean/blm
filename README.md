@@ -35,18 +35,18 @@ We recruited 400 participants through Amazon.com's Mechanical Turk crowdsourcing
 
 Then, ![Figure 3](../master/results_experiments/2_blm/graphs/likeability2bins_collapsed.pdf ") presents the number of subjects that gave "Yes", "No", "Not all", and "All" responses, collapsed by predicate and noun, separated based on whether the participant gave a self-report rating of finding the group represented by the noun in the statement highly likeable or highly unlikeable. Similarly, ![Figure 4](../master/results_experiments/2_blm/graphs/likeability3bins_collapsed.pdf ") presents the number of subjects that gave "Yes", "No", "Not all", and "All" responses, collapsed by predicate and noun, separated based on whether the participant gave a self-report rating of finding the group represented by the noun in the statement highly likeable, moderately so, or highly unlikeable.Here we can see somewhat of a difference: more participants who found a group highly likeable responded "Yes" to statements combining that group with positive predicates and "No" to statements combining that group with negative predicates. Contrastingly, more participants who found a group highly unlikeable responded "No" to statements combining that group with positive predicates and "Yes" to statements combining that group with negative predicates. The proportion of "All" and "Not all" responses stayed constant regardless of participant's likeability judgment. 
 
-![Figure 5](../master/results_experiments/2_blm/graphs/ingroupoutgroup.pdf ") presents the  number of subjects that gave each of the 4 responses, collapsed only by predicate. Figure 5 shows that for every statement besides "Black lives matter," the most common response was "Not all". In fact, the only statement where the proportion of responses reflects our hypothesis is "Black lives matter." A potential cause of this strong effect could be constancy across subjects, since every participant responded to "Black lives matter", unlike the other combinations between noun and predicate. 
+![Figure 5](../master/results_experiments/2_blm/graphs/ingroupoutgroup.pdf ") presents the  number of subjects that gave each of the 4 responses, collapsed only by predicate. Figure 5 shows that for every statement besides "Black lives matter," the most common response was "Not all". In fact, the only statement where the proportion of responses reflects our hypothesis is "Black lives matter." 
 
 and ![Figure 3](../master/results_experiments/2_blm/graphs/means.pdf "
 
 ## Discussion ##
-
+A potential cause of this strong effect could be constancy across subjects, since every participant responded to "Black lives matter", unlike the other combinations between noun and predicate. 
 
 **Table 1: True and False Fillers**
-True  | False
-------------- | -------------
+True                 | False    
+-------------------- | ---------
 Rabbits eat carrots  | Cats talk
-Chickens lay eggs  | Pigs fly 
+Chickens lay eggs    | Pigs fly 
 
 **Appendix A: List of Predicates Tested in Norming Study**
 be incompetent, be rude, cheat, be unintelligent, be sexist, be condescending, be selfish, lie, be dirty, be intolerant, be weak, swear, be loud, burrow, lay eggs, be a mammal, fly, talk, swim, eat carrots, walk, sleep, eat, breathe, matter, be funny, be talented, be strong, be tolerant, be generous, be cooperative, be smart, be honest, solve problems, be competent, be nice, be kind 
