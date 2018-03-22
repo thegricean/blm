@@ -116,14 +116,14 @@ like = likeability %>%
   select(workerid,noun,response,nounclass) %>%
   mutate(response_likeable = response) %>%
   select(-response)
-  
+
 id = identity %>%
   select(workerid,noun,response,nounclass) %>%
   mutate(response_identity = response) %>%
   left_join(like,by=c("workerid","noun","nounclass"))
 
 View(id)
-  
+
 ggplot(id %>% filter(response_identity != "Confused"), aes(x=response_likeable, fill=response_identity)) +
   geom_density(alpha=.5) +
   facet_wrap(~noun)
@@ -207,16 +207,58 @@ ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_grid(noun~response_2bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/likeability2bins.pdf", height = 20)
+ggsave(file="../graphs/likeability2bins.pdf",height=50,width=20,limitsize=FALSE)
 
 #likability 2 bins collapsed pred and noun 
 ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_2bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/likeability2bins_collapsed.pdf")
+ggsave(file="../graphs/likeability2bins_collapsed.pdf",height=10,width=20,limitsize=FALSE)
 
+#######DEMOCRATS LIKEABILITY ##########
 
+#getting responses to questions about Democrats 
+prod_pred = production %>% 
+  filter(noun == 'Democrats') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
 
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
 
+#joining responses to questions about men with info about whether they identify as a man  
+
+like_collapsed_pred_prod = likeability %>%
+  select(workerid,response_2bins,noun) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+ggplot(like_collapsed_pred_prod, aes(x=response_prod, fill = response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_grid(predicate~response_2bins, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/democrats_likability_predicates_2bins.pdf",height=50,width=20,limitsize=FALSE)
+
+########## REPUBLICANS LIKEABILITY ##########
+
+#getting responses to questions about Democrats 
+prod_pred = production %>% 
+  filter(noun == 'Republicans') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
+
+#joining responses to questions about men with info about whether they identify as a man  
+
+like_collapsed_pred_prod = likeability %>%
+  select(workerid,response_2bins,noun) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+ggplot(like_collapsed_pred_prod, aes(x=response_prod, fill = response_prod)) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_grid(predicate~response_2bins, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/democrats_likability_predicates_2bins.pdf",height=50,width=20,limitsize=FALSE)
 
