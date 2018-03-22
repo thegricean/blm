@@ -144,7 +144,6 @@ id_collapsed_pred = identity %>%
   rename(response_identity = response) %>%
   right_join(prod,by=c("workerid","noun"))
 
-
 #identity collapsed pred only 
 ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
@@ -153,12 +152,13 @@ ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=clas
 ggsave(file="../graphs/ingroupoutgroup.pdf")
 
 #identity collapsed pred only in terms of proportions - NOT QUITE RIGHT 
-ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod,y=(..count..)/sum(..count..))) +
-  geom_histogram(stat="count",position="dodge") +
+ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
+  geom_bar(stat="count",position="fill") +
   facet_grid(noun~response_identity, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1)) +
+  scale_y_continuous(labels=scales::percent) +
   labs(y="Proportion of Responses", x="class")
-ggsave(file="../graphs/ingroupoutgroup_proportions.pdf")
+ggsave(file="../graphs/ingroupoutgroup_proportions.pdf",height=50,width=20,limitsize=FALSE)
 
 #identity collapsed pred and noun 
 ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
@@ -168,13 +168,13 @@ ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=clas
 ggsave(file="../graphs/ingroupoutgroup_collapsed.pdf")
 
 #identity collapsed pred and noun in terms of proportions rather than counts - NOT QUITE RIGHT
-ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod,y=(..count..)/sum(..count..))) +
-  geom_histogram(stat="count",position="dodge") +
+ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
+  geom_bar(stat="count",position="fill") +
   facet_wrap(~response_identity, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))+
   scale_y_continuous(labels=scales::percent) +
   labs(y="Proportion of Responses", x="class") 
-ggsave(file="../graphs/ingroupoutgroup_collapsed_proportions.pdf")
+ggsave(file="../graphs/ingroupoutgroup_collapsed_proportions.pdf",height=10,width=20,limitsize=FALSE)
 
 ###### PRODUCTION X LIKEABILITY 3 BINS#######
 
@@ -189,12 +189,28 @@ ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/likeability3bins.pdf", height = 20)
 
+#likabiity 3 bins collapsed by pred, not noun PROPORTIONS
+ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_grid(noun~response_3bins, scales="free_y") +
+  scale_y_continuous(labels=scales::percent) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/likeability3bins_proportions.pdf",height=50,width=20,limitsize=FALSE)
+
 #likability 3 bins collapsed pred and noun 
 ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_3bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/likeability3bins_collapsed.pdf")
+
+#likability 3 bins collapsed pred and noun proportions 
+ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~response_3bins, scales="free_y") +
+  scale_y_continuous(labels=scales::percent) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/likeability3bins_collapsed_proportions.pdf",height=10,width=20,limitsize=FALSE)
 
 ###### PRODUCTION X LIKEABILITY 2 BINS#######
 
@@ -209,12 +225,28 @@ ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/likeability2bins.pdf",height=50,width=20,limitsize=FALSE)
 
+#likabiity 2 bins collapsed by pred, not noun PROPORTIONS
+ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_grid(noun~response_2bins, scales="free_y") +
+  scale_y_continuous(labels=scales::percent) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/likeability2bins_proportions.pdf",height=50,width=20,limitsize=FALSE)
+
 #likability 2 bins collapsed pred and noun 
 ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_2bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/likeability2bins_collapsed.pdf",height=10,width=20,limitsize=FALSE)
+
+#likability 3 bins collapsed pred and noun proportions 
+ggplot(like_collapsed_pred, aes(x=class, fill=response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~response_2bins, scales="free_y") +
+  scale_y_continuous(labels=scales::percent) +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/likeability2bins_collapsed_proportions.pdf",height=10,width=20,limitsize=FALSE)
 
 #######DEMOCRATS LIKEABILITY ##########
 
@@ -250,8 +282,6 @@ prod_pred = production %>%
 
 prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
 
-#joining responses to questions about men with info about whether they identify as a man  
-
 like_collapsed_pred_prod = likeability %>%
   select(workerid,response_2bins,noun) %>%
   right_join(prod_pred,by=c("workerid","noun"))
@@ -260,5 +290,5 @@ ggplot(like_collapsed_pred_prod, aes(x=response_prod, fill = response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_grid(predicate~response_2bins, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/democrats_likability_predicates_2bins.pdf",height=50,width=20,limitsize=FALSE)
+ggsave(file="../graphs/republicans_likability_predicates_2bins.pdf",height=50,width=20,limitsize=FALSE)
 
