@@ -1,3 +1,50 @@
+# Black lives matter: The Role of Group Membership and Likability in Exhaustivity Inference #
+
+Intro goes here!
+
+## Experiment 1 ##
+The initial norming experiment was intended to obtain participant ratings of 36 different predicates on a sliding scale in order to determine which predicates were considered highly positive, highly negative, and somewhat neutral in valence. We used the results of this experiment to determine which predicates would be used in the target experiment. 
+
+### Method ###
+### Participants ###
+We recruited 20 participants through Amazon.com's Mechanical Turk crowdsourcing service. Participants were compensated for their time.
+
+### Design and Methods ###
+We asked participants to make a judgment as to whether they thought a predicate was positive, negative, or neutral by answering the question ("How good or bad is it to [predicate]?"). 36 different predicates were tested, where 12 each were informally hypothesized to have relatively high (positive), relatively low (negative), and relatively moderate (neutral) mean ratings. Each participant completed 36 trials, where in each trial, they indicated their answer to the standard question about the predicate by adjusting a slider with endpoints labeled "Very good" on the far right and "Very bad" on the far left. On each trial, we measured the distance of the slider from the left endpoint: values ranged from 0 to 1. We analyzed data from all participants. 
+
+### Results ###
+For each predicate, we computed its mean rating by taking the average across all trials completed by all participants that asked about that predicate. Figure 1 presents the mean rating for each predicate, separated into 3 bins depending on whether we hypothesized that it would be categorized as positive, negative, or neutral. Greater values mean that a participant thought a predicate was more positive, where lesser values mean that a participant judged a predicate as more negative. When examining the general pattern of results in Figure 1, it becomes apparent that, in general, the predicates hypothesized to be positive all had mean ratings of 0.7 or higher, in accordance with our hypothesis. Similarly, the predicates hypothesized to be negative predominantly had mean ratings of 0.25 or lower. However, from the data it becomes evident that the majority of the predicates hypothesized to be neutral had mean ratings of 0.6 or higher, suggesting that participants thought they were more positive than neutral. 
+
+## Experiment 2 ##
+The second experiment sought to examine our primary hypothesis that the strength and rate of exhaustivity inference would depend on the valence of the predicate (positive versus negative versus neutral) as well as group membership (in-group or out-group) and participant rating of group likability for the given noun. 
+
+### Participants ###
+We recruited 400 participants through Amazon.com's Mechanical Turk crowdsourcing service. Participants were compensated for their time. 
+
+### Design and Methods ###
+**Production block.** Participants were asked to choose which one of four responses ("All lives matter", "Yes, Black lives matter", "No, Black lives don't matter", "Not all Black lives matter") to a statement consisting of a noun representing a group of people (e.g. "men", "Republicans") paired with a predicate (e.g. "are competent", "cheat") most aligned with how they would naturally respond to the statement. Statements consisted of a noun paired with a predicate. Participants responded to 16 positive statements, where each of eight target nouns was paired with a random two positive predicates (chosen from a collection of six positive predicates), as well as 16 negative statements where each of the target nouns was paired with a random two negative predicates (chosen from a collection of six negative predicates). All predicates were chosen from those evaluated in the norming study, and the positive and negative predicates were as complementary as possible. Participants also responded to 32 neutral statements where each of the eight target nouns was paired with four neutral predicates, and four filler statements (two true, two false) intended to serve as a measure of attention. Finally, every participant responded to the statement, "Black lives matter," leading to a total of 69 statements. All nouns and predicates shown in the target study are listed in Appendix B, Table 1, and Table 2. The order of the four responses as well as the order of all trials in the production, likability, and identity blocks were randomized between subjects. 
+
+**Identity block.** We asked participants to report whether or not they identified as a member of the group represented by each of the eight target nouns as well as the group "Black people" in accordance with the statement, "Black lives matter." Each participant completed 9 randomized trials, where they indicated their answer to the question, "Do you identify as a [singular noun]?" by choosing one of three options: "Yes," "No," or "Confused." We analyzed data from only participants that answered either "Yes" or "No". 
+
+**Likability block.** Finally, we asked participants to report how likable they found each group represented by each of the eight target nouns as well as the group "Black people." Each participant completed 9 randomized trials, where they indicated their answer to the question, "How likable do you find [plural noun]?" by adjusting a slider with endpoints labeled "Extremely likable" on the far right and "Extremely unlikable" on the far left. On each trial, we measured the distance of the slider from the left endpoint: values ranged from 0 to 1. We analyzed data from all participants. The order of the likability and identity blocks was randomized between subjects. 
+
+## Results ## 
+
+## Discussion ##
+
+
+**Table 1: True and False Fillers**
+True  | False
+------------- | -------------
+Rabbits eat carrots  | Cats talk
+Chickens lay eggs  | Pigs fly 
+
+**Appendix A: List of Predicates Tested in Norming Study**
+be incompetent, be rude, cheat, be unintelligent, be sexist, be condescending, be selfish, lie, be dirty, be intolerant, be weak, swear, be loud, burrow, lay eggs, be a mammal, fly, talk, swim, eat carrots, walk, sleep, eat, breathe, matter, be funny, be talented, be strong, be tolerant, be generous, be cooperative, be smart, be honest, solve problems, be competent, be nice, be kind 
+
+**Appendix B: List of Target Nouns Shown in Target Study**
+men, women, Democrats, Republicans, Europeans, Americans, people in their 50's, people in their 20's, Black lives (shown once) 
+
 # METHOD
 
 **Predicates:**
