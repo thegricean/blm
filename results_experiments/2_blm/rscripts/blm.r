@@ -145,12 +145,29 @@ ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=clas
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/ingroupoutgroup.pdf")
 
+#identity collapsed pred only in terms of proportions - NOT QUITE RIGHT 
+ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod,y=(..count..)/sum(..count..))) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_grid(noun~response_identity, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1)) +
+  labs(y="Proportion of Responses", x="class")
+ggsave(file="../graphs/ingroupoutgroup_proportions.pdf")
+
 #identity collapsed pred and noun 
 ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_identity, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/ingroupoutgroup_collapsed.pdf")
+
+#identity collapsed pred and noun in terms of proportions rather than counts - NOT QUITE RIGHT
+ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod,y=(..count..)/sum(..count..))) +
+  geom_histogram(stat="count",position="dodge") +
+  facet_wrap(~response_identity, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))+
+  scale_y_continuous(labels=scales::percent) +
+  labs(y="Proportion of Responses", x="class") 
+ggsave(file="../graphs/ingroupoutgroup_collapsed_proportions.pdf")
 
 ###### PRODUCTION X LIKEABILITY 3 BINS#######
 
