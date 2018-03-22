@@ -165,7 +165,7 @@ ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=clas
   geom_histogram(stat="count",position="dodge") +
   facet_wrap(~response_identity, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
-ggsave(file="../graphs/ingroupoutgroup_collapsed.pdf")
+ggsave(file="../graphs/ingroupoutgroup_collapsed.pdf",height=50,width=20,limitsize=FALSE)
 
 #identity collapsed pred and noun in terms of proportions rather than counts - NOT QUITE RIGHT
 ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
@@ -265,9 +265,9 @@ like_collapsed_pred_prod = likeability %>%
   select(workerid,response_2bins,noun) %>%
   right_join(prod_pred,by=c("workerid","noun"))
 
-ggplot(like_collapsed_pred_prod, aes(x=response_prod, fill = response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  facet_grid(predicate~response_2bins, scales="free_y") +
+ggplot(like_collapsed_pred_prod, aes(x=response_2bins, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/democrats_likability_predicates_2bins.pdf",height=50,width=20,limitsize=FALSE)
 
@@ -286,9 +286,9 @@ like_collapsed_pred_prod = likeability %>%
   select(workerid,response_2bins,noun) %>%
   right_join(prod_pred,by=c("workerid","noun"))
 
-ggplot(like_collapsed_pred_prod, aes(x=response_prod, fill = response_prod)) +
-  geom_histogram(stat="count",position="dodge") +
-  facet_grid(predicate~response_2bins, scales="free_y") +
+ggplot(like_collapsed_pred_prod, aes(x=response_2bins, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/republicans_likability_predicates_2bins.pdf",height=50,width=20,limitsize=FALSE)
 
