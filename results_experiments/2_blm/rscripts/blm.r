@@ -8,7 +8,13 @@ source("helpers.r")
 
 d = read.table(file="../data/blm.csv",sep=",", header=T)
 d = as.data.frame(lapply(d, function(x) {gsub('\"',"",x)}))
-head(d)
+
+#hard-coded filtering for participants who reported a native language other than English 
+d = d %>%
+  filter(language != 'Bangla' & language != 'Bulgarian' & language != 'turkish' & language != 'Spanish' & language != 'spanish') %>%
+  droplevels()
+
+#head(d)
 nrow(d)
 summary(d)
 d$Trial = as.numeric(as.character(d$slide_number)) - 2
@@ -137,6 +143,7 @@ id_collapsed_pred = identity %>%
   select(workerid,response,noun) %>%
   rename(response_identity = response) %>%
   right_join(prod,by=c("workerid","noun"))
+
 
 #identity collapsed pred only 
 ggplot(id_collapsed_pred %>% filter(response_identity != 'Confused'), aes(x=class, fill=response_prod)) +
