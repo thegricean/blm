@@ -265,9 +265,12 @@ like_collapsed_pred_prod = likeability %>%
   select(workerid,response_2bins,noun) %>%
   right_join(prod_pred,by=c("workerid","noun"))
 
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+like_collapsed_pred_prod$predicate2 = factor(like_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
 ggplot(like_collapsed_pred_prod, aes(x=response_2bins, fill = response_prod)) +
   geom_bar(stat="count",position="fill") +
-  facet_wrap(~predicate, scales="free_y") +
+  facet_wrap(~predicate2, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/democrats_likability_predicates_2bins.png",height=20,width=20,limitsize=FALSE)
 
@@ -286,9 +289,161 @@ like_collapsed_pred_prod = likeability %>%
   select(workerid,response_2bins,noun) %>%
   right_join(prod_pred,by=c("workerid","noun"))
 
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+like_collapsed_pred_prod$predicate2 = factor(like_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
 ggplot(like_collapsed_pred_prod, aes(x=response_2bins, fill = response_prod)) +
   geom_bar(stat="count",position="fill") +
-  facet_wrap(~predicate, scales="free_y") +
+  facet_wrap(~predicate2, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/republicans_likability_predicates_2bins.png",height=20,width=20,limitsize=FALSE)
 
+####### MEN LIKEABILITY ##########
+
+#getting responses to questions about men 
+prod_pred = production %>% 
+  filter(noun == 'men') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
+
+#joining responses to questions about men with info about whether they identify as a man  
+
+like_collapsed_pred_prod = likeability %>%
+  select(workerid,response_2bins,noun) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+like_collapsed_pred_prod$predicate2 = factor(like_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
+ggplot(like_collapsed_pred_prod, aes(x=response_2bins, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate2, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/men_likability_predicates_2bins.png",height=20,width=20,limitsize=FALSE)
+
+########## WOMEN LIKEABILITY ##########
+
+#getting responses to questions about women 
+prod_pred = production %>% 
+  filter(noun == 'women') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
+
+like_collapsed_pred_prod = likeability %>%
+  select(workerid,response_2bins,noun) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+like_collapsed_pred_prod$predicate2 = factor(like_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
+ggplot(like_collapsed_pred_prod, aes(x=response_2bins, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate2, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/women_likability_predicates_2bins.png",height=20,width=20,limitsize=FALSE)
+
+########## DEMOCRATS IDENTITY ##########
+prod_pred = production %>% 
+  filter(noun == 'Democrats') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
+
+#joining responses to questions about men with info about whether they identify as a Democrat  
+
+id_collapsed_pred_prod = identity %>%
+  select(workerid,response,noun) %>%
+  rename(response_identity = response) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+id_collapsed_pred_prod$predicate2 = factor(id_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
+ggplot(id_collapsed_pred_prod%>% filter(response_identity != 'Confused'), aes(x=response_identity, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate2, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/democrats_identity_predicates.png",height=20,width=20,limitsize=FALSE)
+
+########## REPUBLICANS IDENTITY ##########
+prod_pred = production %>% 
+  filter(noun == 'Republicans') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
+
+#joining responses to questions about men with info about whether they identify as a Democrat  
+
+id_collapsed_pred_prod = identity %>%
+  select(workerid,response,noun) %>%
+  rename(response_identity = response) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+id_collapsed_pred_prod$predicate2 = factor(id_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
+ggplot(id_collapsed_pred_prod%>% filter(response_identity != 'Confused'), aes(x=response_identity, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate2, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/republicans_identity_predicates.png",height=20,width=20,limitsize=FALSE)
+
+########## MEN IDENTITY ##########
+prod_pred = production %>% 
+  filter(noun == 'men') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
+
+#joining responses to questions about men with info about whether they identify as a Democrat  
+
+id_collapsed_pred_prod = identity %>%
+  select(workerid,response,noun) %>%
+  rename(response_identity = response) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+id_collapsed_pred_prod$predicate2 = factor(id_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
+ggplot(id_collapsed_pred_prod%>% filter(response_identity != 'Confused'), aes(x=response_identity, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate2, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/men_identity_predicates.png",height=20,width=20,limitsize=FALSE)
+
+########## WOMEN IDENTITY ##########
+prod_pred = production %>% 
+  filter(noun == 'women') %>%
+  select(workerid,noun,response,predicate,class) %>%
+  mutate(response_prod = response) %>%
+  select(-response)
+
+prod_pred$noun <- gsub('Black lives', 'Black people', prod_pred$noun)
+
+#joining responses to questions about men with info about whether they identify as a Democrat  
+
+id_collapsed_pred_prod = identity %>%
+  select(workerid,response,noun) %>%
+  rename(response_identity = response) %>%
+  right_join(prod_pred,by=c("workerid","noun"))
+
+#Housekeeping for per-predicate plots: ordering in terms of predicate valence (done manually)#
+id_collapsed_pred_prod$predicate2 = factor(id_collapsed_pred_prod$predicate, levels=c('competent','generous','honest','kind','smart','strong','incompetent','lie','rude','sexist','unintelligent','weak','eat','sleep','breathe','walk'))
+
+ggplot(id_collapsed_pred_prod%>% filter(response_identity != 'Confused'), aes(x=response_identity, fill = response_prod)) +
+  geom_bar(stat="count",position="fill") +
+  facet_wrap(~predicate2, scales="free_y") +
+  theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
+ggsave(file="../graphs/women_identity_predicates.png",height=20,width=20,limitsize=FALSE)
