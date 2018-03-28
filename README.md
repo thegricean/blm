@@ -41,19 +41,13 @@ We recruited 400 participants through Amazon.com's Mechanical Turk crowdsourcing
 
 ![Figure 5](../master/results_experiments/2_blm/graphs/ingroupoutgroup_proportions.png) Figure 5 presents the  proportions of subjects that gave each of the 4 responses to statements with negative, neutral, and positive predicates, separated by in-group and out-group, collapsed only by predicate. Figure 5 shows that for every statement besides "Black lives matter," the most common response was "Not all". In fact, the only statement where the proportion of responses reflects our hypothesis is "Black lives matter." However, there are some other interesting phenomena that arise on a per-noun basis. For example, participants in the out-group never responded "Yes" to positive or negative statements about Americans. Further, for positive statements about Americans, out-group responded with only either "No" or "Not all", whereas for negative statements about Americans, they responded predominantly with "Not all", followed by an equal proportion of "No" and "Everyone" responses. In addition, for statements asking about people in their 50's, participants in the in-group never responded with "Everyone" to positive statements, and never responded "Yes" to negative statements. Otherwise, the proportion of "Everyone" responses was fairly constant across nouns and across positive and negative predicates. Finally, for the most part, more participants in the in-group responded "No" compared to "Yes" to statements with negative predicates, and vice versa; this effect is especially pronounced among statements asking about Democrats and Republicans. 
 
-<p float="left">
-  <img src="../master/results_experiments/2_blm/graphs/likeability2bins_proportions.png" width="1000" height = "1000" />
-  <img src="../master/results_experiments/2_blm/graphs/likeability3bins_proportions.png" width="1000" height = "1000" /> 
-</p>
+![Figure 6](../master/results_experiments/2_blm/graphs/likeability2bins_proportions.png) ![Figure 7](../master/results_experiments/2_blm/graphs/likeability3bins_proportions.png) 
 
 Figures 6 and 7 show the  proportion of subjects that gave each of the 4 responses, separated in terms of whether the participant found the group referenced in the statement highly likeable or highly unlikeable (in the case of 2 bins) or highly, moderately, and unlikeable (in the case of 3 bins), collapsed only by predicate. The results mirror those found in the in-group out-group plots, where for the most part the relative proportion of "Yes" and "No" responses depends on the participant's likeability of the group and the valence of the predicate in the stimulus. 
 
 Lastly, since the effects of predicate valence and group likeability on the distribution of responses was more pronounced for statements about Democrats and Republicans compared to any other noun that was tested, we decided to specifically examine the individual distributions by predicate for statements asking about those two groups. 
 
-<p float="left">
-  <img src="../master/results_experiments/2_blm/graphs/republicans_likability_predicates_2bins.png" width="1000" height = "1000" />
-  <img src="../master/results_experiments/2_blm/graphs/democrats_likability_predicates_2bins.png" width="1000" height = "1000" /> 
-</p>
+![Figure 8](../master/results_experiments/2_blm/graphs/republicans_likability_predicates_2bins.png) ![Figure 9](../master/results_experiments/2_blm/graphs/democrats_likability_predicates_2bins.png) 
 
 Figures 8 and 9 show the number of subjects that gave each of the 4 responses to negative, positive, and neutral statements about Democrats and Republicans, separated by predicate. From Figures 8 and 9 we observed that the strongest effects arose from the statements "Republicans are strong", "Republicans are competent", and "Republicans are incompetent", where participants that found Republicans unlikable by and large responded "Yes" to the negative statements and "No" to the positive statements, as well as vice versa for participants finding Republicans likable. However, because these data reflect only two nouns out of 9 that were tested and were separated by predicate, any observed effects will be less powerful because the data is more sparse. 
 
