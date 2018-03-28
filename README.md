@@ -57,10 +57,11 @@ Additionally, it may be possible that participants' QUD for the various stimuli 
 Finally, it could be beneficial to directly assess participants' prior beliefs with regards to the topics covered in the statements, since it is possible that the prior beliefs surrounding "Black lives matter" are very different and even more salient than those surrounding a statement like "Women are weak."
 
 **Table 1: True and False Fillers**
-True                 | False    
--------------------- | ---------
-Rabbits eat carrots  | Cats talk
-Chickens lay eggs    | Pigs fly 
+
+| True | False |
+| --- | --- |
+| Rabbits eat carrots | Cats talk |
+| Chickens lay eggs | Pigs fly |
 
 **Appendix A: List of Predicates Tested in Norming Study**
 be incompetent, be rude, cheat, be unintelligent, be sexist, be condescending, be selfish, lie, be dirty, be intolerant, be weak, swear, be loud, burrow, lay eggs, be a mammal, fly, talk, swim, eat carrots, walk, sleep, eat, breathe, matter, be funny, be talented, be strong, be tolerant, be generous, be cooperative, be smart, be honest, solve problems, be competent, be nice, be kind 
