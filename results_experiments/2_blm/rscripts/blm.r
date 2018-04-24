@@ -447,3 +447,76 @@ ggplot(id_collapsed_pred_prod%>% filter(response_identity != 'Confused'), aes(x=
   facet_wrap(~predicate2, scales="free_y") +
   theme(axis.text.x=element_text(angle=45,hjust=1,vjust=1))
 ggsave(file="../graphs/women_identity_predicates.png",height=20,width=20,limitsize=FALSE)
+
+
+### ANALYSIS
+
+# merge identity and likeability ratings into production
+prod = production %>%
+  select(workerid,noun,response,class,predicate) %>%
+  mutate(response_prod = response, noun=gsub('Black lives', 'Black people', prod$noun)) %>%
+  select(-response)
+dd = identity %>%
+  select(workerid,response,noun) %>%
+  rename(response_identity = response) %>%
+  right_join(prod,by=c("workerid","noun")) 
+d = likeability %>%
+  select(workerid,response,noun) %>%
+  rename(response_like = response) %>%
+  right_join(dd,by=c("workerid","noun")) %>%
+  mutate(yes = response_prod == "yes", no = response_prod == "no", notall = response_prod == "notall", all = response_prod == "everyone")
+summary(d)
+
+# exclude fillers from analysis and cases where people didn't unambiguously identify with category or not
+ad = d %>%
+  filter(class %in% c("negative","positive","neutral") & response_identity != "Confused") %>%
+  droplevels() %>%
+  mutate(clike = myCenter(response_like), cidentity = myCenter(response_identity), noun = as.factor(as.character(noun)))
+nrow(ad)
+summary(ad)
+
+contrasts(ad$response_identity)
+pairscor.fnc(ad[,c("class","response_identity","response_like")])
+
+ad$Item = as.factor(paste(ad$noun,ad$predicate))
+ad$num_yes = ifelse(ad$yes, 1, 0)
+ad$num_no = ifelse(ad$no, 1, 0)
+ad$num_notall = ifelse(ad$notall, 1, 0)
+ad$num_all = ifelse(ad$all, 1, 0)
+
+summary(ad)
+
+# "yes" responses: simple effects analysis to see effect of identity and likeability for the three different classes of predicates separately
+m.yes = glmer(yes ~ class + class:cidentity + class:clike + (1+ class + class:cidentity + class:clike|Item) + (1+ class + class:cidentity + class:clike|workerid), data=ad, family="binomial")
+m.yes.brm = brm(num_yes ~ class + class:cidentity + class:clike + (1|Item) + (1|workerid), data=ad, family="bernoulli")
+summary(m)
+# generally: more "yes" responses for neutral and positive predicates than for negative ones.
+# likeability*predicate type interaction: negative efffect of likeability on "yes" responses for negative predicates, but positive effect for both neutral and positive predicates
+# identity*predicate type interaction: positive effect of identity on "yes" responses for positive predicates; identity doesn't matter for negative or neutral predicates
+
+# "no" responses: simple effects analysis to see effect of identity and likeability for the three different classes of predicates separately
+m.no = glmer(no ~ class + class:cidentity + class:clike + (1|Item) + (1|workerid), data=ad, family="binomial")
+m.no.brm = brm(num_no ~ class + class:cidentity + class:clike + (1|Item) + (1|workerid), data=ad, family="bernoulli")
+summary(m)
+# generally: fewer "no" responses for neutral and positive predicates than for negative ones.
+# likeability*predicate type interaction: positive efffect of likeability on "no" responses for negative predicates, but negative effect for both neutral and positive predicates
+# identity*predicate type interaction: positive effect of identity on "no" responses for negative and neutral predicates; identity doesn't matter for positive predicates
+
+# "notall" responses: simple effects analysis to see effect of identity and likeability for the three different classes of predicates separately
+m.notall = glmer(notall ~ class + class:cidentity + class:clike + (1|Item) + (1|workerid), data=ad, family="binomial")
+m.notall.brm = brm(num_notall ~ class + class:cidentity + class:clike + (1|Item) + (1|workerid), data=ad, family="bernoulli")
+summary(m)
+# generally: way fewer "notall" responses for neutral predicates than for negative ones, but no diff between negative and positive.
+# likeability*predicate type interaction: positive efffect of likeability on "notall" responses for negative predicates (as predicted!! #notallmen effect --sort of, because it's not showing up in identity, just likeability), but no other effects of likeability
+# identity*predicate type interaction: no identity effects
+
+# "all" responses: simple effects analysis to see effect of identity and likeability for the three different classes of predicates separately
+m.all = glmer(all ~ class + class:cidentity + class:clike + (1|Item) + (1|workerid), data=ad, family="binomial")
+m.all.brm = brm(num_all ~ class + class:cidentity + class:clike + (1|Item) + (1|workerid), data=ad, family="bernoulli")
+summary(m)
+# generally: way more "all" responses for neutral predicates than for negative ones, but no diff between negative and positive.
+# likeability*predicate type interaction: positive efffect of likeability on "all" responses for positive predicates and marginal negative effect for negative predicates (hm, this is the strange one)
+# identity*predicate type interaction: marginal negative effect of identity with positive predicates (ie marginal "all lives matter" effect in predicted direction)
+
+
+
